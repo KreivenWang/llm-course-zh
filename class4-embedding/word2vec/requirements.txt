@@ -1,0 +1,5 @@
+gensim
+jieba
+numpy
+pandas
+scikit_learn

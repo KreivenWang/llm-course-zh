@@ -1,0 +1,5 @@
+创建并运行了一个使用Ollama代替DashScope的版本
+
+帮我在services文件夹下面，创建2个service，一个ChatOllama 用
+再帮我创建一个使用gemini 2.5 flash API 的单例service，
+

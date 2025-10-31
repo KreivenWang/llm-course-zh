@@ -1,0 +1,27 @@
+.venv/
+__pycache__/
+*.pyc
+*.ipynb
+
+# 排除大型文件
+*.xlsx
+*.xls
+*.csv
+*.ppt
+*.pptx
+*.doc
+*.docx
+*.pdf
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.model
+*.bin
+*.dat
+*.db
+*.sqlite
+
+class6-rag2/graphrag-main/cases/
+

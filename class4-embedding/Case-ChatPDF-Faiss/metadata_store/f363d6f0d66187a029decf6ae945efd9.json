@@ -1,0 +1,25 @@
+{
+  "doc_id": "浦发上海浦东发展银行西安分行个金客户经理考核办法.pdf",
+  "source_file": "./浦发上海浦东发展银行西安分行个金客户经理考核办法.pdf",
+  "chunk_count": 5,
+  "text_length": 3881,
+  "page_count": 9,
+  "pages_with_content": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "embedding_model": "qwen3-embedding:4b",
+  "chunk_size": 1000,
+  "chunk_overlap": 200,
+  "vector_store": "FAISS",
+  "save_path": "./vector_db",
+  "created_at": "2025-10-14T16:34:15.000346",
+  "updated_at": "2025-10-14T16:34:15.000346"
+}

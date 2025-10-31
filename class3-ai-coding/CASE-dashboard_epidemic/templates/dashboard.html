@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香港疫情数据可视化大屏</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- 引入 ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>香港疫情数据可视化大屏</h1>
+            <div class="update-time" id="updateTime"></div>
+        </header>
+
+        <!-- 核心指标展示（顶部卡片） -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-title">新增确诊</div>
+                <div class="metric-value" id="newConfirmed">-</div>
+                <div class="metric-trend" id="newConfirmedTrend"></div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">累计确诊</div>
+                <div class="metric-value" id="cumulativeConfirmed">-</div>
+                <div class="metric-trend" id="cumulativeConfirmedTrend"></div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">现存确诊</div>
+                <div class="metric-value" id="existingConfirmed">-</div>
+                <div class="metric-trend" id="existingConfirmedTrend"></div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">新增康复</div>
+                <div class="metric-value" id="newRecovered">-</div>
+                <div class="metric-trend" id="newRecoveredTrend"></div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">新增死亡</div>
+                <div class="metric-value" id="newDeaths">-</div>
+                <div class="metric-trend" id="newDeathsTrend"></div>
+            </div>
+        </div>
+
+        <!-- 主要内容区域 -->
+        <div class="main-content">
+            <!-- 地理分布图（中心区域左侧） -->
+            <div class="left-column">
+                <div class="chart-container">
+                    <div class="chart-title">地理分布图</div>
+                    <div id="hkMapChart" class="chart"></div>
+                </div>
+            </div>
+
+            <!-- 右侧区域 -->
+            <div class="right-column">
+                <!-- 每日新增与累计确诊数据（中心区域右侧上部） -->
+                <div class="chart-container">
+                    <div class="chart-title">每日新增与累计确诊数据</div>
+                    <div id="trendChart" class="chart"></div>
+                </div>
+
+                <!-- 各区域疫情对比（右侧中部） -->
+                <div class="chart-container">
+                    <div class="chart-title">各区域疫情对比</div>
+                    <div id="regionalChart" class="chart"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部区域 - 趋势分析图和风险预警看板 -->
+        <div class="bottom-row">
+            <!-- 趋势分析图 -->
+            <div class="bottom-chart">
+                <div class="chart-container">
+                    <div class="chart-title">趋势分析图</div>
+                    <div id="trendAnalysisChart" class="chart"></div>
+                </div>
+            </div>
+            
+            <!-- 风险预警看板 -->
+            <div class="bottom-chart">
+                <div class="chart-container">
+                    <div class="chart-title">风险预警看板</div>
+                    <div id="riskWarningChart" class="chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}" type="module"></script>
+</body>
+</html>

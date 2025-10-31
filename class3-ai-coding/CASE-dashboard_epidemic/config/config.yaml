@@ -1,0 +1,21 @@
+# 项目配置文件
+
+# 数据文件路径
+data_path: "src/data/香港各区疫情数据_20250322.xlsx"
+
+# 地图数据路径
+map_data_path: "src/data/map_data/hongkong.json"
+
+# 输出图表路径
+output_path: "docs/"
+
+# Flask应用配置
+flask:
+  host: "0.0.0.0"
+  port: 5000
+  debug: true
+
+# 可视化配置
+visualization:
+  figure_size: [12, 8]
+  dpi: 100
