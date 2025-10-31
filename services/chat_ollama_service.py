@@ -14,6 +14,7 @@ class ChatOllamaService:
     _initialized = False
 
     def __new__(cls):
+        print("Creating ChatOllamaService instance")
         """创建单例实例"""
         if cls._instance is None:
             cls._instance = super(ChatOllamaService, cls).__new__(cls)
@@ -22,9 +23,10 @@ class ChatOllamaService:
     def __init__(self):
         """初始化ChatOllama服务"""
         if not self._initialized:
-            # 使用qwen3:14b模型
-            self.model = ChatOllama(model="qwen3:14b")
+            model_name = "qwen3:14b"
+            self.model = ChatOllama(model=model_name)
             self._initialized = True
+            print(f"ChatOllamaService initialized with {model_name} model")
 
     def get_model(self):
         """获取ChatOllama模型实例"""
