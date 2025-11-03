@@ -3,24 +3,26 @@ import json
 import re
 from typing import List, Union, Dict, Any, Optional
 
-from langchain.agents import Tool, AgentExecutor, create_react_agent, AgentType, initialize_agent
-from langchain.prompts import PromptTemplate
-from langchain.schema import AgentAction, AgentFinish
-from langchain_community.llms import Tongyi
-from langchain.memory import ConversationBufferMemory
-import dashscope
-# 从环境变量获取 dashscope 的 API Key
-api_key = os.environ.get('DASHSCOPE_API_KEY')
-dashscope.api_key = api_key
+from langchain_core.tools import Tool
+from langchain_classic.agents import initialize_agent, AgentType, AgentExecutor
+from langchain_classic.prompts import PromptTemplate
+from langchain_classic.schema import AgentAction, AgentFinish
+# from langchain_community.llms import Tongyi
+from langchain_classic.memory import ConversationBufferMemory
+# import dashscope
+# # 从环境变量获取 dashscope 的 API Key
+# api_key = os.environ.get('DASHSCOPE_API_KEY')
+# dashscope.api_key = api_key
 
-# --- 环境设置 ---
-# 确保设置了您的通义千问 API 密钥
-# 您可以通过环境变量 DASHSCOPE_API_KEY 设置，或者直接在这里修改
-DASHSCOPE_API_KEY = os.getenv('DASHSCOPE_API_KEY')
+# # --- 环境设置 ---
+# # 确保设置了您的通义千问 API 密钥
+# # 您可以通过环境变量 DASHSCOPE_API_KEY 设置，或者直接在这里修改
+# DASHSCOPE_API_KEY = os.getenv('DASHSCOPE_API_KEY')
 
-# 检查API密钥是否存在
-if not DASHSCOPE_API_KEY:
-    raise ValueError("请设置环境变量DASHSCOPE_API_KEY")
+# # 检查API密钥是否存在
+# if not DASHSCOPE_API_KEY:
+#     raise ValueError("请设置环境变量DASHSCOPE_API_KEY")
+from services.chat_ollama_service import chat_ollama_service
 
 # --- 自定义网络诊断工具 ---
 
@@ -179,7 +181,7 @@ def create_network_diagnosis_chain():
     tool_names = ", ".join([t.name for t in tools])
 
     # 3. 初始化语言模型 (使用通义千问)
-    llm = Tongyi(model_name="qwen-turbo", dashscope_api_key=api_key)
+    llm = chat_ollama_service.get_model()
 
     # 4. 创建 Zero-Shot ReAct Agent（简化版，参考 test1.py）
     agent = initialize_agent(
